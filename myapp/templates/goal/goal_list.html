@@ -1,0 +1,20 @@
+
+
+{% block content %}
+  <h2>Goals List</h2>
+  <ul>
+    {% for goal in object_list %}
+      <li>
+        <strong>{{ goal.title }}</strong><br>
+        Description: {{ goal.description }}<br>
+        Target Date: {{ goal.target_date }}
+        <div class="mt-2">
+          <a href="{% url 'goal_update' goal.pk %}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{% url 'goal_delete' goal.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+      </li>
+      <hr>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'goal_create' %}" class="btn btn-success">Add Goal</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+
+
+{% block content %}
+  <h2>Workout List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Exercise</th>
+        <th>Duration (minutes)</th>
+        <th>Sets</th>
+        <th>Reps</th>
+        <th>Weight</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for workout in object_list %}
+        <tr>
+          <td>{{ workout.exercise }}</td>
+          <td>{{ workout.duration_minutes }}</td>
+          <td>{{ workout.sets }}</td>
+          <td>{{ workout.reps }}</td>
+          <td>{{ workout.weight }}</td>
+          <td>
+            <a href="{% url 'workout_update' workout.pk %}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="{% url 'workout_delete' workout.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'workout_create' %}" class="btn btn-success">Add Workout</a>
+{% endblock %}
